@@ -171,7 +171,7 @@ class ActionSendEmail(Action):
             s = smtplib.SMTP_SSL(host="smtp.gmail.com", port=465)
             s.login('abc@gmail.com', 'abc123')
         
-            message['From'] = 'chatfoodie@gmail.com'
+            message['From'] = 'abc@gmail.com'
             message['To'] = email_id
            
             s.send_message(message)
