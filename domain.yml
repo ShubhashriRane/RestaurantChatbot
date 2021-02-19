@@ -1,0 +1,143 @@
+session_config:
+  session_expiration_time: 500
+  carry_over_slots_to_new_session: false
+intents:
+- restaurant_search
+- deny
+- greet
+- affirm
+- ask_budget
+- ask_email
+- goodbye
+- stop
+
+entities:
+- budget
+- cuisine
+- email
+- location
+
+slots:
+  budget:
+    type: text
+    influence_conversation: true
+  check_op:
+    type: bool
+    influence_conversation: true
+  cuisine:
+    type: text
+    influence_conversation: true
+  cuisine_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+    - __other__
+  email:
+    type: text
+    influence_conversation: true
+  email_message:
+    type: text
+    influence_conversation: true
+  email_validity:
+    type: bool
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+  location_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+    - __other__
+  results_found:
+    type: bool
+    influence_conversation: true
+
+responses:
+  utter_ask_cuisine:
+  - text: what kind of cuisine would you like?
+    buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: Mexican
+      title: Mexican
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North India
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  utter_ask_budget:
+  - text: What would be your preferred budget?
+    buttons:
+    - title: Lesser than Rs. 300
+      payload: Low
+    - title: Rs. 300 to 700
+      payload: Medium
+    - title: More than Rs. 700
+      payload: High
+  utter_ask_details:
+  - text: Would you like me to send an email with details of restaurants?
+  utter_ask_email:
+  - text: Please provide your email id.
+  utter_confirm_email:
+  - text: An email has been sent to you. Bon Appetit!
+  utter_default:
+  - text: I Cannot Understand
+  - text: Sorry , I haven't been trained on this. Please contact +910123456789
+  utter_goodbye:
+  - text: Good Bye! Please do visit again!
+  - text: Bye-bye! Have a wonderful day 
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_location_invalid:
+  - text: Sorry, we do not serve at the requested location. Would you like to try another location?
+  utter_cuisine_invalid:
+  - text: Sorry. We do not serve the requested cuisine.
+  utter_ask_location_retry:
+  - text: Sorry.Please try location once more.
+  utter_budget_invalid:
+  - text: Sorry. Please enter correct budget.
+  utter_emailerror:
+  - text: Sorry, Please specify the email again.
+  utter_noresults:
+  - text: Sorry, No results were found for your preferred criteria. Would you like to increase the budget?
+  utter_did_that_help:
+  - text: Did that Help?
+actions:
+- action_cuisine_valid
+- action_email_valid
+- action_location_valid
+- action_restart
+- action_search_restaurants
+- action_send_email
+- action_slot_reset
+- check_location
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_details
+- utter_ask_email
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_location_retry
+- utter_budget_invalid
+- utter_confirm_email
+- utter_default
+- utter_did_that_help
+- utter_emailerror
+- utter_goodbye
+- utter_greet
+- utter_noresults
+version: '2.0'
